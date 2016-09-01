@@ -55,7 +55,7 @@ Gallery
 
 **Powerarrow Darker Alt**
 
-.. image:: http://dotshare.it/public/image/uploads/649.png
+.. image:: http://dotshare.it/public/images/uploads/649.png
 
 **Steamburn** copycatted from ok100_ [porting from dwm]
 
