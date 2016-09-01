@@ -197,8 +197,9 @@ cpuwidget = lain.widgets.cpu({
 tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 --[[
 tempwidget	= lain.widgets.temp({
+	timeout = 20,
 	settings = function()
-		widget:set_text(" " .. coretemp_now .. "°C ")
+		widget:set_text(" " .. string.format("%2s", coretemp_now) .. "°C ")
 	end
 })
 ]]
