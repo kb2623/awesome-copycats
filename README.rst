@@ -49,6 +49,11 @@ Gallery
 
 .. image:: http://dotshare.it/public/images/uploads/650.png
 
+**Multicolor Alt** inspired by tip_
+
+.. image:: http://dotshare.it/public/images/uploads/650.png
+
+
 **Powerarrow Darker** inspired by romockee_
 
 .. image:: http://dotshare.it/public/images/uploads/649.png
