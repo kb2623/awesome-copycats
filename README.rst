@@ -126,7 +126,7 @@ Feel free to email me if you have any request.
 Additional info
 ===============
 
-This repository is a fork of _copycatFork.
+This repository is a fork of copycatFork_.
 
 .. _BY-NC-SA: http://creativecommons.org/licenses/by-nc-sa/4.0/
 .. _Awesome: http://github.com/awesomeWM/awesome  
