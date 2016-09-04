@@ -126,7 +126,7 @@ Feel free to email me if you have any request.
 Additional info
 ===============
 
-This repository is a fork of copycatFork_.
+This repository is a fork of copycat-killer_.
 
 .. _BY-NC-SA: http://creativecommons.org/licenses/by-nc-sa/4.0/
 .. _Awesome: http://github.com/awesomeWM/awesome  
@@ -146,4 +146,4 @@ This repository is a fork of copycatFork_.
 .. _Icons: https://github.com/copycat-killer/dots/tree/master/.fonts
 .. _Debian: http://weiwu.sdf.org/100921.html
 .. _Ubuntu: https://wiki.ubuntu.com/Fonts#Enabling_Bitmapped_Fonts
-.. _copycatFork: https://github.com/copycat-killer/awesome-copycats
+.. _copycat-killer: https://github.com/copycat-killer/awesome-copycats
