@@ -123,6 +123,11 @@ Blackburn and Dremora use Icons_: be sure to have bitmaps enabled if running und
 
 Feel free to email me if you have any request.
 
+Additional info
+===============
+
+This repository is a fork of _copycatFork.
+
 .. _BY-NC-SA: http://creativecommons.org/licenses/by-nc-sa/4.0/
 .. _Awesome: http://github.com/awesomeWM/awesome  
 .. _tip: https://bbs.archlinux.org/profile.php?id=51327
@@ -141,3 +146,4 @@ Feel free to email me if you have any request.
 .. _Icons: https://github.com/copycat-killer/dots/tree/master/.fonts
 .. _Debian: http://weiwu.sdf.org/100921.html
 .. _Ubuntu: https://wiki.ubuntu.com/Fonts#Enabling_Bitmapped_Fonts
+.. _copycatFork: https://github.com/copycat-killer/awesome-copycats
