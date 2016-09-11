@@ -5,6 +5,9 @@
 theme                                           = {}
 
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/solarized-dark"
+theme.layouts                                   = theme.dir .. "/layouts/"
+theme.taglist                                   = theme.dir .. "/taglist/"
+theme.icons                                     = theme.dir .. "/icons/"
 
 theme.font                                      = "Terminus 9"
 
@@ -41,8 +44,8 @@ theme.taglist_bg_focus                          = "#DC322F"
 theme.taglist_fg_focus                          = "#859900"
 
 -- Display the taglist squares
-theme.taglist_squares_sel                       = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel                     = "/usr/share/awesome/themes/default/taglist/squarew.png"
+theme.taglist_squares_sel                       = theme.taglist .. "square_sel.png"
+theme.taglist_squares_unsel                     = theme.taglist .. "square_unsel.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -85,18 +88,18 @@ theme.titlebar_maximized_button_focus_active    = "/usr/share/awesome/themes/def
 theme.wallpaper                                 = theme.dir .. "/imgs/background1.jpg"
 
 -- You can use your own layout icons like this:
-theme.layout_fairh                              = theme.dir .. "/icons/fairh.png"
-theme.layout_fairv                              = theme.dir .. "/icons/fairv.png"
-theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
-theme.layout_max                                = theme.dir .. "/icons/max.png"
-theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
-theme.layout_tilebottom                         = theme.dir .. "/icons/tilebottom.png"
-theme.layout_tileleft                           = theme.dir .. "/icons/tileleft.png"
-theme.layout_tile                               = theme.dir .. "/icons/tile.png"
-theme.layout_tiletop                            = theme.dir .. "/icons/tiletop.png"
-theme.layout_spiral                             = theme.dir .. "/icons/spiral.png"
-theme.layout_dwindle                            = theme.dir .. "/icons/dwindle.png"
+theme.layout_fairh                              = theme.layouts .. "fairh.png"
+theme.layout_fairv                              = theme.layouts .. "fairv.png"
+theme.layout_floating                           = theme.layouts .. "floating.png"
+theme.layout_magnifier                          = theme.layouts .. "magnifier.png"
+theme.layout_max                                = theme.layouts .. "max.png"
+theme.layout_fullscreen                         = theme.layouts .. "fullscreen.png"
+theme.layout_tilebottom                         = theme.layouts .. "tilebottom.png"
+theme.layout_tileleft                           = theme.layouts .. "tileleft.png"
+theme.layout_tile                               = theme.layouts .. "tile.png"
+theme.layout_tiletop                            = theme.layouts .. "tiletop.png"
+theme.layout_spiral                             = theme.layouts .. "spiral.png"
+theme.layout_dwindle                            = theme.layouts .. "dwindle.png"
 
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
 
@@ -104,7 +107,7 @@ theme.awesome_icon                              = theme.dir .. "/icons/awesome.p
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme                                = nil
 
-theme.clock_icon                                = theme.dir .. "/icons/clock.png"
+theme.clock_icon                                = theme.icons .. "clock.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
