@@ -139,7 +139,7 @@ mytextclock = lain.widgets.abase({
 	timeout	= 60,
 	cmd		= "date +'%a %d %b %R'",
 	settings	= function ()
-		widget:set_text(" " .. output)
+		widget:set_text(output)
 	end
 })
 
@@ -160,6 +160,18 @@ mykbdlayout = lain.widgets.contrib.kbdlayout({
 		else
 			widget:set_text(" " .. kbdlayout_now.layout .. " ")
 		end
+	end
+})
+
+-- ALSA volume
+volicon = wibox.widget.imagebox(beautiful.volume_icon)
+volumewidget = lain.widgets.alsa({
+	timeout = 3600,
+	settings = function()
+		if volume_now.status == "off" then
+			volume_now.level = volume_now.level .. "M"
+		end
+		widget:set_text(string.format("%3s", volume_now.level) .. "% ")
 	end
 })
 
@@ -268,6 +280,7 @@ for s = 1, screen.count() do
 
 	right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(spr)
+	right_layout_add(volicon, volumewidget)
 	right_layout_add(mykbdlayout)
 	right_layout_add(clockicon, mytextclock)
 	if s == 1 then right_layout_add(wibox.widget.systray()) end
