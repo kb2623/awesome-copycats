@@ -9,7 +9,7 @@ theme.layouts                                   = theme.dir .. "/layouts/"
 theme.taglist                                   = theme.dir .. "/taglist/"
 theme.icons                                     = theme.dir .. "/icons/"
 
-theme.font                                      = "Terminus 9"
+theme.font                                      = "Terminus 10"
 
 theme.bg_normal                                 = "#002B37"
 theme.bg_focus                                  = "#002B36"
@@ -56,6 +56,9 @@ theme.menu_width                                = 100
 
 theme.bar_height                                = 15
 
+-- Useless gaps 
+theme.useless_gap_width = 10
+
 -- You can add as many variables as
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
@@ -100,6 +103,9 @@ theme.layout_tile                               = theme.layouts .. "tile.png"
 theme.layout_tiletop                            = theme.layouts .. "tiletop.png"
 theme.layout_spiral                             = theme.layouts .. "spiral.png"
 theme.layout_dwindle                            = theme.layouts .. "dwindle.png"
+theme.layout_uselessfair                        = theme.layouts .. "fairh.png"
+theme.layout_uselesspiral                       = theme.layouts .. "spiral.png"
+theme.layout_uselesstile                        = theme.layouts .. "tile.png"
 
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
 

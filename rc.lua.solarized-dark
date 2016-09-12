@@ -81,7 +81,10 @@ local layouts =
 	awful.layout.suit.spiral.dwindle,
 	awful.layout.suit.max,
 	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier
+	awful.layout.suit.magnifier,
+	lain.layout.uselessfair,
+	lain.layout.uselesspiral,
+	lain.layout.uselesstile
 }
 -- }}}
 
@@ -144,21 +147,21 @@ mytextclock = lain.widgets.abase({
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
 -- Keyboard map indicator and changer
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", "" , "US" }, { "si", "" , "SI" } } 
-kbdcfg.current = 1  -- us is our default layout
-kbdcfg.widget = wibox.widget.textbox()
-kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
-kbdcfg.switch = function ()
-	kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-	local t = kbdcfg.layout[kbdcfg.current]
-	kbdcfg.widget:set_text(" " .. t[3] .. " ")
-	os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-end
-
--- Mouse bindings
-kbdcfg.widget:buttons(awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end)))
+mykbdlayout = lain.widgets.contrib.kbdlayout({
+	timeout = 3600,
+	layouts = { 
+		{ layout = "us" },
+		{ layout = "si" } 
+	},
+	settings = function()
+		if kbdlayout_now.variant then
+			widget:set_text(" " .. kbdlayout_now.layout .. 
+			"/" .. kbdlayout_now.variant .. " ")
+		else
+			widget:set_text(" " .. kbdlayout_now.layout .. " ")
+		end
+	end
+})
 
 -- Separators
 spr = wibox.widget.textbox(' ')
@@ -265,7 +268,7 @@ for s = 1, screen.count() do
 
 	right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(spr)
-	right_layout_add(kbdcfg.widget)
+	right_layout_add(mykbdlayout)
 	right_layout_add(clockicon, mytextclock)
 	if s == 1 then right_layout_add(wibox.widget.systray()) end
 	right_layout_add(mylayoutbox[s])
@@ -323,21 +326,21 @@ awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal
 awful.key({ modkey, "Control" }, "r", awesome.restart),
 awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+awful.key({ modkey,				}, "l",     function () awful.tag.incmwfact( 0.05)    end),
+awful.key({ modkey,				}, "h",     function () awful.tag.incmwfact(-0.05)    end),
+awful.key({ modkey, "Shift"	}, "h",     function () awful.tag.incnmaster( 1)      end),
+awful.key({ modkey, "Shift"	}, "l",     function () awful.tag.incnmaster(-1)      end),
+awful.key({ modkey, "Control"	}, "h",     function () awful.tag.incncol( 1)         end),
+awful.key({ modkey, "Control"	}, "l",     function () awful.tag.incncol(-1)         end),
+awful.key({ modkey,				}, "space", function () awful.layout.inc(layouts,  1) end),
+awful.key({ modkey, "Shift"	}, "space", function () awful.layout.inc(layouts, -1) end),
 
-awful.key({ modkey, "Control" }, "n", awful.client.restore),
+awful.key({ modkey, "Control"	}, "n", awful.client.restore),
 
 -- Prompt
-awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+awful.key({ modkey 				}, "r", function () mypromptbox[mouse.screen]:run() end),
 
-awful.key({ modkey }, "x",
+awful.key({ modkey				}, "x",
 function ()
 	awful.prompt.run({ prompt = "Run Lua code: " },
 	mypromptbox[mouse.screen].widget,
@@ -345,7 +348,10 @@ function ()
 	awful.util.getdir("cache") .. "/history_eval")
 end),
 -- Menubar
-awful.key({ modkey,				 }, "d", function() menubar.show() end)
+awful.key({ modkey,				}, "d", function() menubar.show() end),
+-- On the fly useless gaps change
+awful.key({ modkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
+awful.key({ modkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -372,7 +378,7 @@ awful.key({ modkey            }, "Down",     	function () awful.client.moveresiz
 awful.key({ modkey            }, "Up",       	function () awful.client.moveresize(  0, -20,   0,   0) end),
 awful.key({ modkey            }, "Left",     	function () awful.client.moveresize(-20,   0,   0,   0) end),
 awful.key({ modkey            }, "Right",    	function () awful.client.moveresize( 20,   0,   0,   0) end),
-awful.key({ modkey				}, "Scroll_Lock",	function () kbdcfg.switch() end)
+awful.key({ modkey				}, "Scroll_Lock",	function () mykbdlayout.next() end)
 )
 
 -- Bind all key numbers to tags.
