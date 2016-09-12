@@ -114,6 +114,7 @@ theme.awesome_icon                              = theme.dir .. "/icons/awesome.p
 theme.icon_theme                                = nil
 
 theme.clock_icon                                = theme.icons .. "clock.png"
+theme.volume_icon                               = theme.icons .. "spkr.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
