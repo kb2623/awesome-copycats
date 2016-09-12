@@ -283,8 +283,12 @@ for s = 1, screen.count() do
 	right_layout_add(volicon, volumewidget)
 	right_layout_add(mykbdlayout)
 	right_layout_add(clockicon, mytextclock)
-	if s == 1 then right_layout_add(wibox.widget.systray()) end
-	right_layout_add(mylayoutbox[s])
+	right_layout_add(spr)
+	if s == 1 then 
+		right_layout:add(wibox.widget.systray())
+		right_layout:add(spr)
+	end
+	right_layout:add(mylayoutbox[s])
 
 	-- Now bring it all together (with the tasklist in the middle)
 	local layout = wibox.layout.align.horizontal()
