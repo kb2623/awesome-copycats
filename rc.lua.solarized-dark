@@ -169,9 +169,18 @@ volumewidget = lain.widgets.alsa({
 	timeout = 3600,
 	settings = function()
 		if volume_now.status == "off" then
-			volume_now.level = volume_now.level .. "M"
+			volume_now.level = "M"
 		end
 		widget:set_text(string.format("%3s", volume_now.level) .. "% ")
+	end
+})
+
+-- / fs
+fsicon = wibox.widget.imagebox(beautiful.fs_icon)
+fswidget = lain.widgets.fs({
+	timeout 	= 3600,
+	settings	= function()
+		widget:set_text(string.format("%3s", fs_now.used) .. "% ")
 	end
 })
 
@@ -281,9 +290,9 @@ for s = 1, screen.count() do
 	right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(spr)
 	right_layout_add(volicon, volumewidget)
+	right_layout_add(fsicon, fswidget)
 	right_layout_add(mykbdlayout)
 	right_layout_add(clockicon, mytextclock)
-	right_layout_add(spr)
 	if s == 1 then 
 		right_layout:add(wibox.widget.systray())
 		right_layout:add(spr)
@@ -389,7 +398,23 @@ function (c)
 	c.maximized_vertical   = not c.maximized_vertical
 end),
 -- Change keyboard layout
-awful.key({ modkey				}, "Scroll_Lock",	function () mykbdlayout.next() end)
+awful.key({ modkey				}, "Scroll_Lock",	function () mykbdlayout.next() end),
+-- ALSA volume control
+awful.key({							}, "XF86AudioRaiseVolume",
+function ()
+	os.execute(string.format("amixer set %s 1%%+", volumewidget.channel))
+	volumewidget.update()
+end),
+awful.key({							}, "XF86AudioLowerVolume",
+function ()
+	os.execute(string.format("amixer set %s 1%%-", volumewidget.channel))
+	volumewidget.update()
+end),
+awful.key({							}, "XF86AudioMute",
+function ()
+	os.execute(string.format("amixer set %s toggle", volumewidget.channel))
+	volumewidget.update()
+end)
 )
 
 -- Bind all key numbers to tags.
