@@ -2,7 +2,7 @@
 local gears 		= require("gears")
 local awful 		= require("awful")
 awful.rules 		= require("awful.rules")
-						  require("awful.autofocus")
+require("awful.autofocus")
 -- Widget and layout library
 local wibox 		= require("wibox")
 -- Theme handling library
@@ -71,20 +71,20 @@ modkey = "Mod4"
 local layouts =
 {
 	awful.layout.suit.floating,
-	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
 	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
-	awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.tile,
+	awful.layout.suit.tile.left,
+	-- awful.layout.suit.tile.bottom,
+	awful.layout.suit.tile.top,
+	-- awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.spiral,
+	-- awful.layout.suit.spiral.dwindle,
+	-- awful.layout.suit.max,
+	-- awful.layout.suit.max.fullscreen,
 	awful.layout.suit.magnifier,
+	-- lain.layout.uselesspiral,
+	-- lain.layout.uselesstile,
 	lain.layout.uselessfair,
-	lain.layout.uselesspiral,
-	lain.layout.uselesstile
 }
 -- }}}
 
@@ -144,7 +144,7 @@ mytextclock = lain.widgets.abase({
 })
 
 -- calendar
-lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
+lain.widgets.calendar:attach(mytextclock, { font_size = beautiful.font_size })
 
 -- Keyboard map indicator and changer
 mykbdlayout = lain.widgets.contrib.kbdlayout({
@@ -166,7 +166,7 @@ mykbdlayout = lain.widgets.contrib.kbdlayout({
 -- ALSA volume
 volicon = wibox.widget.imagebox(beautiful.volume_icon)
 volumewidget = lain.widgets.alsa({
-	timeout = 3600,
+	timeout = 120,
 	settings = function()
 		if volume_now.status == "off" then
 			volume_now.level = "M"
@@ -178,9 +178,42 @@ volumewidget = lain.widgets.alsa({
 -- / fs
 fsicon = wibox.widget.imagebox(beautiful.fs_icon)
 fswidget = lain.widgets.fs({
-	timeout 	= 3600,
+	timeout 	= 120,
 	settings	= function()
 		widget:set_text(string.format("%3s", fs_now.used) .. "% ")
+	end
+})
+
+-- MEM
+memicon = wibox.widget.imagebox(beautiful.mem_icon)
+memwidget = lain.widgets.mem({
+	timeout	= 10,
+	settings = function()
+		widget:set_text(string.format("%4s", mem_now.used) .. "MB ")
+	end
+})
+
+-- Battery
+baticon = wibox.widget.imagebox(beautiful.widget_battery)
+batwidget = lain.widgets.bat({
+	timeout 	= 3600,
+	settings = function()
+		if bat_now.status ~= "N/A" then
+			if bat_now.ac_status == 1 then
+				widget:set_markup(" AC ")
+				baticon:set_image(beautiful.widget_ac)
+				return
+			elseif tonumber(bat_now.perc) <= 5 then
+				baticon:set_image(beautiful.widget_battery_empty)
+			elseif tonumber(bat_now.perc) <= 15 then
+				baticon:set_image(beautiful.widget_battery_low)
+			else
+				baticon:set_image(beautiful.widget_battery)
+			end
+			widget:set_markup(bat_now.perc .. "% ")
+		else
+			baticon:set_image(beautiful.widget_ac)
+		end
 	end
 })
 
@@ -289,8 +322,10 @@ for s = 1, screen.count() do
 
 	right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(spr)
+	right_layout_add(memicon, memwidget)
 	right_layout_add(volicon, volumewidget)
 	right_layout_add(fsicon, fswidget)
+	right_layout_add(baticon, batwidget)
 	right_layout_add(mykbdlayout)
 	right_layout_add(clockicon, mytextclock)
 	if s == 1 then 

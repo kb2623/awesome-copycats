@@ -24,7 +24,7 @@ theme.fg_minimize                               = "#ffffff"
 
 theme.border_width                              = 1
 theme.border_normal                             = "#073642"
-theme.border_focus                              = "#002B36"
+theme.border_focus                              = "#074E63"
 theme.border_marked                             = "#CB4B16"
 
 theme.separators_width                          = 6
@@ -50,14 +50,14 @@ theme.taglist_squares_unsel                     = theme.taglist .. "square_unsel
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
+theme.menu_submenu_icon                         = theme.icons .. "/icons/submenu.png"
 theme.menu_height                               = 15
 theme.menu_width                                = 100
 
-theme.bar_height                                = 15
+theme.bar_height                                = 17
 
 -- Useless gaps 
-theme.useless_gap_width = 10
+theme.useless_gap_width = 15
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -115,6 +115,12 @@ theme.icon_theme                                = nil
 
 theme.clock_icon                                = theme.icons .. "clock.png"
 theme.volume_icon                               = theme.icons .. "spkr.png"
+theme.fs_icon                                   = theme.icons .. "fs.png"
+theme.mem_icon                                  = theme.icons .. "mem.png"
+theme.widget_ac                                 = theme.icons .. "ac.png"
+theme.widget_battery                            = theme.icons .. "battery.png"
+theme.widget_battery_low                        = theme.icons .. "battery_low.png"
+theme.widget_battery_empty                      = theme.icons .. "battery_empty.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
