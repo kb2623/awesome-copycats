@@ -9,7 +9,8 @@ theme.layouts                                   = theme.dir .. "/layouts/"
 theme.taglist                                   = theme.dir .. "/taglist/"
 theme.icons                                     = theme.dir .. "/icons/"
 
-theme.font                                      = "Terminus 10"
+theme.font_size                                 = 10
+theme.font                                      = "Terminus " .. theme.font_size
 
 theme.bg_normal                                 = "#002B37"
 theme.bg_focus                                  = "#002B36"
@@ -121,6 +122,11 @@ theme.widget_ac                                 = theme.icons .. "ac.png"
 theme.widget_battery                            = theme.icons .. "battery.png"
 theme.widget_battery_low                        = theme.icons .. "battery_low.png"
 theme.widget_battery_empty                      = theme.icons .. "battery_empty.png"
+theme.widget_music                              = theme.icons .. "note.png"
+theme.widget_music_on                           = theme.icons .. "note_on.png"
+theme.widget_mail                               = theme.icons .. "mail.png"
+theme.widget_mail_on                            = theme.icons .. "mail_on.png"
+theme.widget_net                                = theme.icons .. "net.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

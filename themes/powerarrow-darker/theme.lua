@@ -11,7 +11,8 @@ theme                               = {}
 themes_dir                          = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker"
 theme.wallpaper                     = themes_dir .. "/wall.png"
 
-theme.font                          = "Terminus 9"
+theme.font_size							= 10
+theme.font                          = "Terminus " .. theme.font_size
 theme.fg_normal                     = "#DDDDFF"
 theme.fg_focus                      = "#F0DFAF"
 theme.fg_urgent                     = "#CC9393"
