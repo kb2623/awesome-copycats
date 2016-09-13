@@ -107,21 +107,9 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
-	{ "manual", terminal .. " -e man awesome" },
-	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "restart", awesome.restart },
-	{ "quit", awesome.quit }
-}
-
-mymainmenu = awful.menu.new({
-	items = { 
-		{ "awesome", 		myawesomemenu, beautiful.awesome_icon },
-		{ "Terminal", 		terminal },
-		{ "Web browser",	web_browser },
-		{ "File browser", file_browser },
-		{ "Bmenu",			terminal .. " -e " .. "bmenu" },
-	}
+mymainmenu = awful.menu.new({ 
+	items = require("menugen").build_menu(),
+	theme = { height = 16, width = 130 }
 })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
@@ -376,8 +364,8 @@ for s = 1, screen.count() do
 
 	right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(spr)
-	-- right_layout_add(neticon, netwidget)
 	-- right_layout_add(mpdicon, mpdwidget)
+	-- right_layout_add(neticon, netwidget)
 	-- right_layout_add(mailicon, mailwidget)
 	right_layout_add(memicon, memwidget)
 	right_layout_add(volicon, volumewidget)
