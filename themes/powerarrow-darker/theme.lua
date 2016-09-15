@@ -37,6 +37,7 @@ theme.awful_widget_margin_top       = 2
 theme.mouse_finder_color            = "#CC9393"
 theme.menu_height                   = "16"
 theme.menu_width                    = "140"
+theme.useless_gap_width					= 16
 
 theme.submenu_icon                  = themes_dir .. "/icons/submenu.png"
 theme.taglist_squares_sel           = themes_dir .. "/icons/square_sel.png"
@@ -55,6 +56,9 @@ theme.layout_max                    = themes_dir .. "/icons/max.png"
 theme.layout_fullscreen             = themes_dir .. "/icons/fullscreen.png"
 theme.layout_magnifier              = themes_dir .. "/icons/magnifier.png"
 theme.layout_floating               = themes_dir .. "/icons/floating.png"
+theme.layout_uselessfair            = themes_dir .. "/icons/fairh.png"
+theme.layout_uselesspiral           = themes_dir .. "/icons/spiral.png"
+theme.layout_uselesstile            = themes_dir .. "/icons/tile.png"
 
 theme.widget_ac                     = themes_dir .. "/icons/ac.png"
 theme.widget_battery                = themes_dir .. "/icons/battery.png"
@@ -74,9 +78,9 @@ theme.widget_vol_mute               = themes_dir .. "/icons/vol_mute.png"
 theme.widget_mail                   = themes_dir .. "/icons/mail.png"
 theme.widget_mail_on                = themes_dir .. "/icons/mail_on.png"
 
-theme.tasklist_disable_icon         = true
-theme.tasklist_floating             = ""
-theme.tasklist_maximized_horizontal = ""
-theme.tasklist_maximized_vertical   = ""
+--theme.tasklist_disable_icon         = true
+--theme.tasklist_floating             = ""
+--theme.tasklist_maximized_horizontal = ""
+--theme.tasklist_maximized_vertical   = ""
 
 return theme
