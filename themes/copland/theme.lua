@@ -16,7 +16,7 @@ local os      = { getenv = os.getenv, setlocale = os.setlocale }
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Tamzen 10.5"
+theme.font                                      = "Tamzen 10"
 theme.fg_normal                                 = "#BBBBBB"
 theme.fg_focus                                  = "#78A4FF"
 theme.bg_normal                                 = "#111111"
@@ -101,7 +101,7 @@ mytextclock.font = theme.font
 lain.widgets.calendar({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Tamzen 11",
+        font = "Tamzen 10",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -128,6 +128,7 @@ local mail = lain.widgets.imap({
 })
 --]]
 
+--[[
 -- MPD
 local mpdicon = wibox.widget.imagebox()
 theme.mpd = lain.widgets.mpd({
@@ -151,7 +152,9 @@ theme.mpd = lain.widgets.mpd({
         widget:set_markup(markup.font(theme.font, markup(blue, title) .. artist))
     end
 })
+]]
 
+--[[
 -- Battery
 local baticon = wibox.widget.imagebox(theme.bat)
 local batbar = wibox.widget {
@@ -199,7 +202,9 @@ local batupd = lain.widgets.bat({
 })
 local batbg = wibox.container.background(batbar, "#474747", gears.shape.rectangle)
 local batwidget = wibox.container.margin(batbg, 2, 7, 4, 4)
+]]
 
+--[[
 -- /home fs
 local fsicon = wibox.widget.imagebox(theme.disk)
 local fsbar = wibox.widget {
@@ -228,6 +233,7 @@ theme.fs = lain.widgets.fs({
 })
 local fsbg = wibox.container.background(fsbar, "#474747", gears.shape.rectangle)
 local fswidget = wibox.container.margin(fsbg, 2, 7, 4, 4)
+]]
 
 -- ALSA volume bar
 local volicon = wibox.widget.imagebox(theme.vol)
@@ -277,10 +283,12 @@ theme.volume.bar:buttons(awful.util.table.join (
 local volumebg = wibox.container.background(theme.volume.bar, "#474747", gears.shape.rectangle)
 local volumewidget = wibox.container.margin(volumebg, 2, 7, 4, 4)
 
+--[[
 -- Weather
 theme.weather = lain.widgets.weather({
     city_id = 2643743, -- placeholder (London)
 })
+]]
 
 -- Separators
 local first     = wibox.widget.textbox(markup.font("Tamzen 3", " "))
@@ -340,14 +348,14 @@ function theme.at_screen_connect(s)
             wibox.widget.systray(),
             small_spr,
             --mail.widget,
-            mpdicon,
-            theme.mpd.widget,
-            baticon,
-            batwidget,
-            bar_spr,
-            fsicon,
-            fswidget,
-            bar_spr,
+            --mpdicon,
+            --theme.mpd.widget,
+            --baticon,
+            --batwidget,
+            --bar_spr,
+            --fsicon,
+            --fswidget,
+            --bar_spr,
             volicon,
             volumewidget,
             bar_spr,
